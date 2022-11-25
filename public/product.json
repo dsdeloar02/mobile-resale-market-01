@@ -1,0 +1,122 @@
+[
+    {
+        "categoryName":"Apple",
+        "productName":"Iphon 11",
+        "productImage":"https://i.ibb.co/zhtfY4j/download.jpg",
+        "resalePrice":"120",
+        "orginalPrice":"200",
+        "usedYears":"4 years",
+        "sellerName":"Nurullah",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Apple",
+        "productName":"Iphon 11 Pro",
+        "productImage":"https://i.ibb.co/7zX7KWT/download-1.jpg",
+        "resalePrice":"120",
+        "orginalPrice":"200",
+        "usedYears":"4 years",
+        "sellerName":"Ablus",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Apple",
+        "productName":"Iphon 13 Pro",
+        "productImage":"https://i.ibb.co/4ptqxdg/download-2.jpg",
+        "resalePrice":"150",
+        "orginalPrice":"250",
+        "usedYears":"2 years",
+        "sellerName":"Karim",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Realme",
+        "productName":"Realme C21",
+        "productImage":"https://i.ibb.co/P4B575v/download-3.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Rahim",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Realme",
+        "productName":"Realme C25",
+        "productImage":"https://i.ibb.co/9hDxj3H/download-4.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Kamal",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Realme",
+        "productName":"Realme C25y",
+        "productImage":"https://i.ibb.co/zNj60ZG/download-5.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Nafiul",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Remdi",
+        "productName":"Redmi note 10",
+        "productImage":"https://i.ibb.co/4Ns6RxH/download-6.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Rukon",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Remdi",
+        "productName":"Redmi note 8",
+        "productImage":"https://i.ibb.co/VYxFD2p/download-7.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Ratan",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Remdi",
+        "productName":"Redmi note 9",
+        "productImage":"https://i.ibb.co/fXmxTSP/download-8.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Amirul",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Samsung",
+        "productName":"Samsung note 9",
+        "productImage":"https://i.ibb.co/nM4Z9NG/download-9.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Kabir",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Samsung",
+        "productName":"Samsung m21",
+        "productImage":"https://i.ibb.co/s9NT4Hx/download-10.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Ratul",
+        "postDate":"Nov 25 2022"
+    },
+    {
+        "categoryName":"Samsung",
+        "productName":"samsung a12",
+        "productImage":"https://i.ibb.co/qYwZ1Vr/download-11.jpg",
+        "resalePrice":"100",
+        "orginalPrice":"150",
+        "usedYears":"2 years",
+        "sellerName":"Rahad",
+        "postDate":"Nov 25 2022"
+    }
+]

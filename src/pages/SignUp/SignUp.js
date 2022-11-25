@@ -1,12 +1,24 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Google from '../../assests/icon/google_logo.svg';
 import { AuthContext } from '../../context/AuthProvider';
+import useToken from '../../hook/useToken';
 
 const SignUp = () => {
     const { createUser, updateUser, logOut } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
+
+    if(token){
+      navigate('/')
+    }
+
+    
+
+    // const time = format(new Date(created_at).getTime(), 'PP')
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -15,7 +27,9 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const userstatus = form.userstatus.value;
+        // const time = new Date();
 
+        // const newTime = format(new Date.getTime(), 'PP')
         console.log(name, email, password, userstatus)
 
         createUser(email, password)
@@ -28,10 +42,10 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                 .then(() => {
-                    
-                }).catch((error) => {
-                    // An error occurred
-                    // ...
+                  saveUser(name, email, userstatus);
+                })
+                .catch((error) => {
+                  signUpError(error)
                 });
                 logOut();
             })
@@ -40,6 +54,22 @@ const SignUp = () => {
                 setSignUPError(error.message)
             });
     }
+
+    const saveUser = (name, email, userstatus) =>{
+      const user ={name, email, userstatus};
+      fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+      })
+      .then(res => res.json())
+      .then(data =>{
+          console.log(data)
+          setCreatedUserEmail(email);
+      })
+  }
     
   return (
     <div className="shadow-md py-5 bg-pink-200 dark:bg-slate-800 dark:text-gray-100">
@@ -59,12 +89,12 @@ const SignUp = () => {
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="">As a Seller Or Buyer</label>
                     <div className="flex justify-between mt-2 w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3  ">
                         <div className="w-1/2">
-                            <input type="radio" id="Seller" name="userstatus" value="Seller"  checked/>
+                            <input type="radio" id="Seller" name="userstatus" value="seller"  checked/>
                             <label className="ml-3"  for="Seller">Seller</label>
                         </div>
 
                         <div className="w-1/2">
-                            <input type="radio" id="Buyer" name="userstatus" value="Buyer"/>
+                            <input type="radio" id="Buyer" name="userstatus" value="buyer"/>
                             <label className="ml-3" for="Buyer">Buyer</label>
                         </div>
                     </div>

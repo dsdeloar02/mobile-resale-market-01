@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import {BsFillBrightnessHighFill }  from "react-icons/bs";
-import { CiDark } from "react-icons/ci";
+import { useQuery } from '@tanstack/react-query';
+import { AuthContext } from '../../../context/AuthProvider';
+import useSeller from '../../../hook/useSeller';
+// import {BsFillBrightnessHighFill }  from "react-icons/bs";
+// import { CiDark } from "react-icons/ci";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false)
     const [theme, setTheme] = useState('light');
-    const [changeIcon, setChangeIcon] = useState(false)
+    const { user, logOut } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(theme === 'dark'){
@@ -18,10 +23,16 @@ const Navbar = () => {
     }, [theme])
 
 
-    const handleBgChange = () => { 
-        console.log('clickedd')
-        setTheme(theme === 'dark' ? 'light' : 'dark')
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/')
+             })
+            .catch(err => console.log(err));
+            
     }
+
     return (
         <div>
              <div className='shadow-md bg-pink-200 dark:bg-slate-800'  >
@@ -29,13 +40,6 @@ const Navbar = () => {
                 <div className='flex items-center text-slate-600 w-[300px]'>
                     <h1 className='font-bold  md:text-xl lg:text-2xl dark:text-gray-100' >Developer</h1>
                 </div>
-
-                {/* <button className='flex absolute right-14 top-7' onClick={handleBgChange} >change</button> */}
-                {/* <button className='md:hidden flex absolute right-14 top-7' onClick={() => handleBgChange(setBackground(!background))} >
-                       {
-                            !background ? <CiDark className='text-black w-6 h-5' /> : <BsFillBrightnessHighFill className='text-white w-6 h-5' />
-                       } 
-                </button> */}
 
                 <div onClick={() =>setOpen(!open)} className="absolute right-4 top-6 cursor-pointer md:hidden" >
                     {
@@ -50,11 +54,30 @@ const Navbar = () => {
                     <li className='mx-2  py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
                         <NavLink to='/' >Home</NavLink>
                     </li>
-                    <li className='mx-2 my-2 py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
-                        <NavLink to='/login' >Log In</NavLink>
-                    </li>
+                    {
+                        user?.uid ? 
+                        <>
+                            <button className='mx-2  py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700' onClick={handleLogOut} >Sign Out</button>
+                        
+                            <li className='mx-2 my-2 py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
+                                <NavLink to='/dashboard' > DashBoard </NavLink>
+                            </li>
+                        </>
+                        :
+                        <>
+                            <li className='mx-2 my-2 py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
+                                <NavLink to='/login' >Log In</NavLink>
+                            </li>
+                        </>
+                    }
 
-
+                    {/* {
+                        isSeller ?
+                        <>
+                            <li><Link to="/dashboard/allusers">My User</Link></li>
+                        </> : <></>
+                        
+                    } */}
 
                     {/* <li className='mx-2 py-2 px-1 lg:px-3 flex rounded-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
                         <button className='w-full h-full dark:text-gray-100' onClick={() => handleBgChange(setChangeIcon(!changeIcon))} >

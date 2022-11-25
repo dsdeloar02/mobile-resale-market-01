@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Google from '../../assests/icon/google_logo.svg';
+import { AuthContext } from "../../context/AuthProvider";
 
 const LogIn = () => {
+  const [loginError, setLoginError] = useState('');
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+  const { signIn } = useContext(AuthContext);
 
+  const handleLogIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password)
+    signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setLoginUserEmail(email)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setLoginError(error.message);
+            });
 
+  }
 
   return (
     <div className="shadow-md py-5 bg-pink-200 dark:bg-slate-800 dark:text-gray-100">
@@ -16,7 +37,7 @@ const LogIn = () => {
             </h3>
           </div>
 
-          <form className="w-1/2 mx-auto shadow-md border p-8 rounded">
+          <form onSubmit={handleLogIn} className="w-1/2 mx-auto shadow-md border p-8 rounded">
             <div className="flex flex-wrap -mx-3 ">
 
               <div className="w-full px-3">
