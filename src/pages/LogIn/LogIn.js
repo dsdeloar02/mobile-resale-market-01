@@ -1,12 +1,22 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Google from '../../assests/icon/google_logo.svg';
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hook/useToken";
 
 const LogIn = () => {
   const [loginError, setLoginError] = useState('');
-    const [loginUserEmail, setLoginUserEmail] = useState('');
-  const { signIn } = useContext(AuthContext);
+  const [loginUserEmail, setLoginUserEmail] = useState('');
+  const [token] = useToken(loginUserEmail);
+  const { signIn, setLoading } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location.state?.from?.pathname || '/';
+
+  if (token) {
+    navigate(from, {replace: true});
+  }
 
   const handleLogIn = (event) => {
     event.preventDefault();
@@ -14,16 +24,20 @@ const LogIn = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password)
+    setLoginError('');
     signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                setLoginUserEmail(email)
-            })
-            .catch(error => {
-                console.log(error.message)
-                setLoginError(error.message);
-            });
+        .then(result => {
+          const user = result.user;
+          console.log(user);
+          setLoginUserEmail(email)
+      })
+      .catch(error => {
+          console.log(error.message)
+          setLoginError(error.message);
+      })
+      .finally(() => {
+        setLoading(false)
+      })
 
   }
 
@@ -68,8 +82,7 @@ const LogIn = () => {
                   placeholder="**********"
                 />
               </div>
-
-
+              <p className="font-bold text-red-600 my-2" >{loginError}</p>
               <button className="w-full bg-gray-600 py-3 text-white font-bold mx-3 mt-2 rounded" >Submit</button>
 
               <span className="text-center my-3 w-full " > Or </span>

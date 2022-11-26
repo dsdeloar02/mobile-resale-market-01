@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData, useNavigation } from 'react-router-dom';
+import BuyingModal from '../buyingModal/buyingModal';
 import Loading from '../Shared/Loading/Loading';
 import SingleCategory from './SingleCategory';
 
 const CategoryDetails = () => {
     const categoryProducts = useLoaderData();
+    const [bookingProducts, setBookingProducts] = useState(null)
 
     const navigation = useNavigation();
 
@@ -23,7 +25,14 @@ const CategoryDetails = () => {
                     categoryProducts.map(categoryProduct => <SingleCategory
                         key={categoryProduct._id}
                         categoryProduct={categoryProduct}
+                        setBookingProducts={setBookingProducts}
                     ></SingleCategory>)
+                }
+                {
+                    bookingProducts && <BuyingModal
+                    bookingProducts={bookingProducts}
+                    setBookingProducts={setBookingProducts}
+                ></BuyingModal>
                 }
             </div>
 

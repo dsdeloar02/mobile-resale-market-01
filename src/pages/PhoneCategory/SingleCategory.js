@@ -1,8 +1,13 @@
 import React from 'react';
 import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
 
-const SingleCategory = ({categoryProduct}) => {
+const SingleCategory = ({categoryProduct, setBookingProducts}) => {
     const { productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, postDate } = categoryProduct;
+
+    // const handleSubmit = () => {
+    //     console.log('cliked')
+    // }
+
     return (
         <div className='w-[30%] my-2 rounded shadow-md border p-6'>
             <p className='text-center font-bold text-xl' >{productName}</p> 
@@ -14,10 +19,13 @@ const SingleCategory = ({categoryProduct}) => {
                     <p> Resale :{resalePrice}$</p>
                 </div>
             </div>
-            <p className='pb-2' > Used : {usedYears}</p>
-            <p>Seller : {sellerName}</p>
+            <p className='pb-2' > Used : {usedYears} Years</p>
+            <p>Seller : {sellerName} <span className='text-sm bg-gray-300 rounded-xl px-2' >pending</span> </p>
             <div className='flex justify-between my-2'>
-                <button className='bg-cyan-600 py-2 px-3 text-white'> <BsFillCartFill></BsFillCartFill> </button>
+                <label 
+                    htmlFor="buyingModal"
+                    onClick={() => setBookingProducts(categoryProduct)}
+                    className='bg-cyan-600 py-2 px-3 text-white '> <p><BsFillCartFill></BsFillCartFill></p> </label>
                 <button className='bg-cyan-600 py-2 px-3 text-white'> <BsFillHeartFill></BsFillHeartFill> </button>
             </div>
             <p className='text-center' >Date : {postDate} </p>

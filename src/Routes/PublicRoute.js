@@ -1,6 +1,11 @@
 import AllSeller from "../dashboard/AllSeller/AllSeller";
 import DashboardLayout from "../dashboard/DashboardLayout";
+import AddProduct from "../dashboard/ManageProduct/AddProduct";
+import MyProduct from "../dashboard/ManageProduct/MyProduct";
+import MyOrders from "../dashboard/MyOrder/MyOrders";
+import Blogs from "../pages/Blogs/Blogs";
 import CategoryDetails from "../pages/PhoneCategory/CategoryDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: MainLayout } = require("../Layout/MainLayout");
@@ -28,7 +33,11 @@ const router = createBrowserRouter([
             {
                 path : '/products/:categoryName',
                 loader : ({params}) => fetch(`http://localhost:5000/products?categoryName=${params.categoryName}`),
-                element : <CategoryDetails></CategoryDetails>
+                element : <PrivateRoutes><CategoryDetails></CategoryDetails></PrivateRoutes>
+            },
+            {
+                path : '/blogs',
+                element : <PrivateRoutes><Blogs></Blogs></PrivateRoutes>
             }
         ]
     },
@@ -39,6 +48,18 @@ const router = createBrowserRouter([
             {
                 path : '/dashboard',
                 element : <AllSeller></AllSeller>
+            },
+            {
+                path : '/dashboard/myorders',
+                element:<MyOrders></MyOrders>
+            },
+            {
+                path : '/dashboard/addproducts',
+                element:<AddProduct></AddProduct>
+            },
+            {
+                path : '/dashboard/myproducts',
+                element:<MyProduct></MyProduct>
             }
         ]
     }
