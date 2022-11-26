@@ -58,7 +58,7 @@ const AddProduct = () => {
                 .then(result =>{
                     console.log(result);
                     toast.success(`Product is added successfully`);
-                    navigate('/dashboard/myproducts')
+                    navigate(`/dashboard/myproducts/${user.displayName}`)
                 })
             }
         })
@@ -67,6 +67,7 @@ const AddProduct = () => {
 
     return (
         <div className='w-[80%] mx-auto bg-white rounded-md p-10'>
+            <h2 className='w-full text-center text-xl font-bold my-4'>Add Products</h2>
             <form onSubmit={handleAddProduct} className="w-2/3 mx-auto shadow-md border p-8 rounded">
             <div className="flex flex-wrap -mx-3 ">
 

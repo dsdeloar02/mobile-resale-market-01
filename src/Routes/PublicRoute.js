@@ -5,6 +5,7 @@ import MyProduct from "../dashboard/ManageProduct/MyProduct";
 import MyOrders from "../dashboard/MyOrder/MyOrders";
 import Blogs from "../pages/Blogs/Blogs";
 import CategoryDetails from "../pages/PhoneCategory/CategoryDetails";
+import DisplayError from "../pages/Shared/DisplayError/DisplayError";
 import PrivateRoutes from "./PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -43,7 +44,8 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
+        errorElement:<DisplayError></DisplayError>,
         children : [
             {
                 path : '/dashboard',
@@ -58,7 +60,8 @@ const router = createBrowserRouter([
                 element:<AddProduct></AddProduct>
             },
             {
-                path : '/dashboard/myproducts',
+                path : '/dashboard/myproducts/:sellerName',
+                loader: ({params})=> fetch(`http://localhost:5000/sellePproducts?sellerName=${params.sellerName}`),
                 element:<MyProduct></MyProduct>
             }
         ]

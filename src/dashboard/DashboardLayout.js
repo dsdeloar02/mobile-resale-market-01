@@ -20,30 +20,30 @@ const DashboardLayout = () => {
                 <div className="drawer-content">
                     <Outlet></Outlet>
                 </div>
+
+               
                 <div className="drawer-side">
-                    <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className={`bg-gradient-to-r from-green-400 to-blue-500 w-80 h-screen py-6`}>
                         {
                             isAdmin && <>
-                                <li><Link to="/dashboard/allusers">All Seller</Link></li>
-                                <li><Link to="/dashboard/adddoctor">All buyer</Link></li>
-                                <li><Link to="/dashboard/managedoctors">Reported Items</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/allusers">All Seller</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/adddoctor">All buyer</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/managedoctors">Reported Items</Link></li>
                             </>
                         }
                         {
                             isBuyer && <>
-                                <li><Link to="/dashboard/myorders">My Orders</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/myorders">My Orders</Link></li>
                             </>
                         }
                         {
                             isSeller && <>
-                                <li><Link to='/dashboard/addproducts' >Add a Product</Link></li>
-                                <li><Link to='/dashboard/myproducts'>My Products</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to='/dashboard/addproducts' >Add a Product</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to={`/dashboard/myproducts/${user.displayName}`}>My Products</Link></li>
                             </>
                         }
 
                     </ul>
-
                 </div>
             </div>
         </div>
