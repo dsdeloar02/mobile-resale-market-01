@@ -6,27 +6,16 @@ const MysingleProduct = ({sellerProduct}) => {
     const {_id, postDate, productImage, productName, sellerName, orginalPrice, resalePrice, usedYears } = sellerProduct;
     const navigate = useNavigate();
 
-    const handleAdvertise = () => {
-        const advProduct = {
-            productName,
-            productImage,
-            sellerName,
-            resalePrice,
-            orginalPrice,
-            usedYears,
-            postDate
-        };
-        fetch('http://localhost:5000/advertisProducts', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(advProduct)
+    const handleAdvertise = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/seller/myproducts/${id}`, {
+            method : 'PUT'
         })
         .then(res => res.json())
-        .then(data =>{
-              if(data.acknowledged === true){
-                toast('advertised success fully')
+        .then(data => {
+            if(data.modifiedCount > 0){
+                toast.success('veryfied success')
+                // navigate(`/dashboard/allseller/${userstatus}`)
             }
         })
     }
@@ -59,7 +48,7 @@ const MysingleProduct = ({sellerProduct}) => {
                 <div className="badge badge-secondary">Available</div>
                 </h2>
                 <div className="card-actions justify-end my-2">
-                <button onClick={handleAdvertise} className="badge bg-green-500 ">Advertise</button> 
+                <button onClick={() => handleAdvertise(_id)} className="badge bg-green-500 ">Advertise</button> 
                 <button onClick={handleDelteBtn} className="badge bg-red-800">Delete</button>
                 </div>
             </div>

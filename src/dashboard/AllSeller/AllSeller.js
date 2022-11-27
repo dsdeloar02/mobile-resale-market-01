@@ -17,7 +17,7 @@ const AllSeller = () => {
                             isAdmin && <>
                                 <div class="text-3xl font-extrabold ...">
                                     <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-                                        Wellcome to Dashboard Mr.Admin 
+                                        Wellcome to Dashboard As a Admin
                                     </span>
                                 </div>
                             </>
@@ -35,7 +35,7 @@ const AllSeller = () => {
                             isSeller && <>
                                 <div class="text-3xl font-extrabold ...">
                                     <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-                                        Wellcome to Dashboard As Buyer 
+                                        Wellcome to Dashboard As Seller 
                                     </span>
                                 </div>
                             </>

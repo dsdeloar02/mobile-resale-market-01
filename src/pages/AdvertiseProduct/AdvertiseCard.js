@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
-import { FaCheckCircle } from "react-icons/fa";
 
-const SingleCategory = ({categoryProduct, setBookingProducts}) => {
-    const [checkVerify, setCheckVerify] = useState(false);
-    const {productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, postDate, sellerEmail } = categoryProduct;
+const AdvertiseCard = ({advProduct}) => {
+    const { productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, postDate } = advProduct;
+    const setBookingProducts = () => {
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/user-verify?sellerEmail=${sellerEmail}`)
-        .then(res => res.json())
-        .then(data =>{
-            setCheckVerify(data.result)
-            console.log(data.result);
-        })
-    })
-
-    // const status = checkVerify.map(sellerStatus => <>{sellerStatus.name}</>)
-    // console.log(status)
-
+    }
     return (
         <div className='w-[30%] my-2 rounded shadow-md border p-6'>
             <p className='text-center font-bold text-xl' >{productName}</p> 
@@ -30,15 +18,11 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
                 </div>
             </div>
             <p className='pb-2' > Used : {usedYears} Years</p>
-            <p className='flex items-center'>Seller : {sellerName} 
-                {
-                    checkVerify && <div className='mx-2 '> <FaCheckCircle className='text-green-800'></FaCheckCircle> </div>
-                }
-             </p>
+            <p>Seller : {sellerName} <span className='text-sm bg-gray-300 rounded-xl px-2' >pending</span> </p>
             <div className='flex justify-between my-2'>
                 <label 
                     htmlFor="buyingModal"
-                    onClick={() => setBookingProducts(categoryProduct)}
+                    onClick={() => setBookingProducts(advProduct)}
                     className='bg-cyan-600 py-2 px-3 text-white '> <p><BsFillCartFill></BsFillCartFill></p> </label>
                 <button className='bg-cyan-600 py-2 px-3 text-white'> <BsFillHeartFill></BsFillHeartFill> </button>
             </div>
@@ -47,4 +31,4 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
     );
 }
 
-export default SingleCategory;
+export default AdvertiseCard;

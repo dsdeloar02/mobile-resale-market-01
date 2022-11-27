@@ -1,3 +1,4 @@
+import TotalSeller from "../dashboard/AdminMange/TotalSeller";
 import AllSeller from "../dashboard/AllSeller/AllSeller";
 import DashboardLayout from "../dashboard/DashboardLayout";
 import AddProduct from "../dashboard/ManageProduct/AddProduct";
@@ -63,6 +64,11 @@ const router = createBrowserRouter([
                 path : '/dashboard/myproducts/:sellerName',
                 loader: ({params})=> fetch(`http://localhost:5000/sellePproducts?sellerName=${params.sellerName}`),
                 element:<MyProduct></MyProduct>
+            },
+            {
+                path : '/dashboard/allseller/:userstatus',
+                loader : ({params}) => fetch(`http://localhost:5000/users?userstatus=${params.userstatus}`),
+                element:<TotalSeller></TotalSeller>
             }
         ]
     }

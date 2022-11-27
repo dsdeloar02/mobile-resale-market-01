@@ -23,7 +23,7 @@ const AddProduct = () => {
         const productImage = image[0];
         const formData = new FormData();
         formData.append('image', productImage);
-
+        const advertise = 'false';
         console.log(productName, resalePrice, orginalPrice, categoryName, productImage )
 
         const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
@@ -37,11 +37,13 @@ const AddProduct = () => {
                 console.log(imgData.data.url)
                 const product = {
                     sellerName : user.displayName,
+                    sellerEmail : user.email,
                     productName,
                     resalePrice,
                     orginalPrice,
                     categoryName, 
                     usedYears,
+                    advertise,
                     productImage: imgData.data.url,
                     postDate: format(new Date(), "PP")
                 }

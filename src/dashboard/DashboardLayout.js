@@ -8,9 +8,13 @@ import Navbar from '../pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
+
+    const userStatus = 'seller';
+
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email) ;
     const [isBuyer] = useBuyer(user?.email) ;
+
 
     return (
         <div>
@@ -26,7 +30,7 @@ const DashboardLayout = () => {
                     <ul className={`bg-gradient-to-r from-green-400 to-blue-500 w-80 h-screen py-6`}>
                         {
                             isAdmin && <>
-                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/allusers">All Seller</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to={`/dashboard/allseller/${userStatus}`}>All Seller</Link></li>
                                 <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/adddoctor">All buyer</Link></li>
                                 <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/managedoctors">Reported Items</Link></li>
                             </>

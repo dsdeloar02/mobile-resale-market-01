@@ -18,7 +18,7 @@ const CategoryDetails = () => {
     
     return (
         <div>
-            <h1>Category Details {categoryProducts.length} </h1>
+            <h1 className='text-3xl font-bold text-center my-4' >Category Details  </h1>
             
             <div className='w-[80%] mx-auto flex flex-wrap justify-between my-8'>
                 {
