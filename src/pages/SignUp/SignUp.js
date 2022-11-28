@@ -73,7 +73,6 @@ const SignUp = () => {
 
         console.log(user)
         setSignUPError('')
-        navigate('/');
       })
       .catch(err => {
         console.log('error :', err)

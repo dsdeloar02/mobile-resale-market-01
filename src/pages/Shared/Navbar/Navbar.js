@@ -48,19 +48,19 @@ const Navbar = () => {
                 </div>
 
                 <ul
-                   className={`bg-pink-300 md:bg-transparent py-5 md:py-0 md:flex md:justify-end md:items-center absolute w-full left-0 md:static  transition-all duration-500 ease-in z-50 ${open ? 'top-20' : 'top-[-500px]'}  `} 
+                   className={`bg-slate-800 md:bg-transparent py-5 md:py-0 md:flex md:justify-end md:items-center absolute w-full left-0 md:static  transition-all duration-500 ease-in z-50 ${open ? 'top-18' : 'top-[-500px]'}  `} 
                  
                  >
-                    <li className='mx-2  py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
+                    <li className='mx-2 mb-2 md:mb-0  py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
                         <NavLink to='/' >Home</NavLink>
                     </li>
-                    <li className='mx-2  py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
+                    <li className='mx-2 py-2 mb-2 md:mb-0 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
                         <NavLink to='/blogs' >Blog Page</NavLink>
                     </li>
                     {
                         user?.uid ? 
                         <>
-                            <button className='mx-2  py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700' onClick={handleLogOut} >Sign Out</button>
+                            <button className='w-full mx-2 py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700' onClick={handleLogOut} >Sign Out</button>
                         
                             <li className='mx-2 my-2 py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
                                 <NavLink to='/dashboard' > DashBoard </NavLink>
@@ -74,26 +74,6 @@ const Navbar = () => {
                         </>
                     }
 
-                    {/* {
-                        isSeller ?
-                        <>
-                            <li><Link to="/dashboard/allusers">My User</Link></li>
-                        </> : <></>
-                        
-                    } */}
-
-                    {/* <li className='mx-2 py-2 px-1 lg:px-3 flex rounded-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
-                        <button className='w-full h-full dark:text-gray-100' onClick={() => handleBgChange(setChangeIcon(!changeIcon))} >
-                        {
-                            !changeIcon ? <CiDark className='text-black w-5 h-6' /> : <BsFillBrightnessHighFill className='text-white w-5 h-6' />
-                       }
-                        </button>
-                    </li> */}
-                    {/* <button className='hidden md:flex' onClick={() => handleBgChange(setBackground(!background))} >
-                       {
-                            !background ? <CiDark className='text-black w-6 h-5' /> : <BsFillBrightnessHighFill className='text-white w-6 h-5' />
-                       } 
-                    </button>                     */}
                 </ul>
             </div>
         </div>
