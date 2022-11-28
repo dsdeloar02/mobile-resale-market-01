@@ -1,3 +1,4 @@
+import NotFound from "../components/NotFound/NotFound";
 import TotalSeller from "../dashboard/AdminMange/TotalSeller";
 import AllBuyer from "../dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../dashboard/AllSeller/AllSeller";
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
             {
                 path : '/blogs',
                 element : <PrivateRoutes><Blogs></Blogs></PrivateRoutes>
-            }
+            },
+            {
+                path : '/*',
+                element : <NotFound></NotFound>
+            },
         ]
     },
     {

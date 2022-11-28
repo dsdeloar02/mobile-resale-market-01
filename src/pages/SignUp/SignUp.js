@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,7 +7,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import useToken from '../../hook/useToken';
 
 const SignUp = () => {
-    const { createUser, updateUser, logOut } = useContext(AuthContext);
+    const { createUser, updateUser, logOut, googleProviderLogin } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [token] = useToken(createdUserEmail);
@@ -54,6 +55,32 @@ const SignUp = () => {
                 setSignUPError(error.message)
             });
     }
+
+
+    const handleGoogleSignIn = () =>{
+      const googleprovider = new GoogleAuthProvider();
+      googleProviderLogin(googleprovider)
+      .then(result => {
+        const user = result.user;
+        const userstatus = 'buyer'
+        const userInfo = {
+          displayName : user.name
+          }
+          updateUser(userInfo)
+          .then(() => {
+            saveUser(user.name, user.email, userstatus);
+          })
+
+        console.log(user)
+        setSignUPError('')
+        navigate('/');
+      })
+      .catch(err => {
+        console.log('error :', err)
+        setSignUPError(err.message)
+      })
+    };
+
 
     const saveUser = (name, email, userstatus) =>{
       const user ={name, email, userstatus};
@@ -154,15 +181,15 @@ const SignUp = () => {
 
               <span className="text-center my-3 w-full " > Or </span>
 
-              <button className="w-full border py-3 text-gray-600 mx-3 mt-2 rounded flex justify-center shadow-md" >
-                <img src={Google} alt="" />
-                 <p className="ml-2">Sign Up with Google</p>
-              </button>
 
               <p className="mt-3 w-full text-center" >Allready register ? <Link to='/signup' className="text-cyan-500 font-bold" >Log in</Link></p>
 
             </div>
           </form>
+          <button onClick={handleGoogleSignIn} className="w-full border py-3 text-gray-600 mx-3 mt-2 rounded flex justify-center shadow-md" >
+            <img src={Google} alt="" />
+              <p className="ml-2">Sign Up with Google</p>
+          </button>
         </div>
       </div>
     </div>

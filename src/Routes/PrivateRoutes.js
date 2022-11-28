@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthProvider';
 
 const PrivateRoutes = ({children}) => {
     const {user, loading} = useContext(AuthContext)
-    const location = useLocation();
+    // const location = useLocation();
 
     if(loading){
         return <progress className="progress w-56"></progress>
@@ -14,7 +14,7 @@ const PrivateRoutes = ({children}) => {
         return children;
     }
 
-    return <Navigate to="/login" state={{from: location}} replace></Navigate>;
+    return <Navigate to="/"></Navigate>;
 }
 
 export default PrivateRoutes;
