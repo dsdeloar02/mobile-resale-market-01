@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { BsFillCartFill, BsFillHeartFill } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
+import { AuthContext } from '../../context/AuthProvider';
 
 const SingleCategory = ({categoryProduct, setBookingProducts}) => {
+    const {user} = useContext(AuthContext);
     const [checkVerify, setCheckVerify] = useState(false);
-    // const [verifySsold, setverifySsold] = useState(false);
-    const {productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, postDate, sellerEmail, sold } = categoryProduct;
+    const {productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, categoryName, postDate, sellerEmail, sold } = categoryProduct;
     console.log(categoryProduct)
 
     useEffect(() => {
@@ -17,17 +19,48 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
         })
     })
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/sold-products?sold=${sold}`)
-    //     .then(res => res.json())
-    //     .then(data =>{
-    //         setverifySsold(data.result)
-    //         console.log(data.result);
-    //     })
-    // })
-    // console.log(verifySsold);
-    // const status = checkVerify.map(sellerStatus => <>{sellerStatus.name}</>)
-    // console.log(status)
+    const handleWhistlist = () => {
+        const whistList = {
+            productName,
+            productImage,
+            resalePrice,
+            orginalPrice,
+            usedYears,
+            sellerName,
+            postDate,
+            categoryName,
+            email: user.email
+        }
+        fetch('http://localhost:5000/whistlists', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(whistList)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setBookingProducts(null);
+                    toast.success(' Added Whistlist');
+                    // refetch();
+                }
+                else{
+                    toast.error(data.message);
+                }
+            })
+
+        // TODO: send data to the server
+        // and once data is saved then close the modal 
+        // and display success toast
+        console.log(whistList);
+        setBookingProducts(null);
+    }
+
+
+
+   
 
     return (  
     <div className='w-[30%] my-2 rounded shadow-md border p-6 flex flex-col justify-between'>
@@ -51,7 +84,7 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
                      htmlFor="buyingModal"
                      onClick={() => setBookingProducts(categoryProduct)}
                      className='bg-cyan-600 py-2 px-3 text-white '> <p><BsFillCartFill></BsFillCartFill></p> </label>
-                 <button className='bg-cyan-600 py-2 px-3 text-white'> <BsFillHeartFill></BsFillHeartFill> </button>
+                 <button onClick={handleWhistlist} className='bg-cyan-600 py-2 px-3 text-white'> <BsFillHeartFill></BsFillHeartFill> </button>
              </div>
              <p className='text-center' >Date : {postDate} </p>
          </div>

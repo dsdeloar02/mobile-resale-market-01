@@ -38,6 +38,7 @@ const DashboardLayout = () => {
                         {
                             isBuyer && <>
                                 <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/myorders">My Orders</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/mywhistlist">My Whistlist</Link></li>
                             </>
                         }
                         {
