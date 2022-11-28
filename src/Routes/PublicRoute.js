@@ -4,6 +4,7 @@ import DashboardLayout from "../dashboard/DashboardLayout";
 import AddProduct from "../dashboard/ManageProduct/AddProduct";
 import MyProduct from "../dashboard/ManageProduct/MyProduct";
 import MyOrders from "../dashboard/MyOrder/MyOrders";
+import Payment from "../dashboard/Payment/Payment";
 import Blogs from "../pages/Blogs/Blogs";
 import CategoryDetails from "../pages/PhoneCategory/CategoryDetails";
 import DisplayError from "../pages/Shared/DisplayError/DisplayError";
@@ -69,6 +70,11 @@ const router = createBrowserRouter([
                 path : '/dashboard/allseller/:userstatus',
                 loader : ({params}) => fetch(`http://localhost:5000/users?userstatus=${params.userstatus}`),
                 element:<TotalSeller></TotalSeller>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
             }
         ]
     }

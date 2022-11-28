@@ -35,10 +35,10 @@ const Navbar = () => {
 
     return (
         <div>
-             <div className='shadow-md bg-pink-200 dark:bg-slate-800'  >
+             <div className='shadow-md bg-slate-800'  >
             <div className="container w-5/6 md:w-full mx-auto md:flex justify-between py-6">
                 <div className='flex items-center text-slate-600 w-[300px]'>
-                    <h1 className='font-bold  md:text-xl lg:text-2xl dark:text-gray-100' >Developer</h1>
+                    <h1 className='font-bold  md:text-xl lg:text-2xl text-white'>Mobile Mela </h1>
                 </div>
 
                 <div onClick={() =>setOpen(!open)} className="absolute right-4 top-6 cursor-pointer md:hidden" >

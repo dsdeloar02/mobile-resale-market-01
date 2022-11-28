@@ -14,22 +14,22 @@ import { Autoplay,  EffectFade } from "swiper";
 
 const Banner = () => {
     return (
-        <div className='md:w-[90%] mx-auto h-[300px] md:h-[400px] lg:h-[450px] w-full'>
+        <div className='w-full  h-[300px] md:h-[400px] lg:h-[400px]'>
              <Swiper
              effect={"fade"}
              autoplay={{
-                delay: 2500,
+                delay: 4500,
                 disableOnInteraction: false,
               }}
         modules={[EffectFade, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
-            <img src={realme} alt="" />
+            <img className='w-full' src={realme} alt="" />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
             <img src={iphone} alt="" />
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
             <img src={readmi} alt="" />
         </SwiperSlide>
