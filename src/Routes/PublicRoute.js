@@ -1,4 +1,5 @@
 import TotalSeller from "../dashboard/AdminMange/TotalSeller";
+import AllBuyer from "../dashboard/AllBuyer/AllBuyer";
 import AllSeller from "../dashboard/AllSeller/AllSeller";
 import DashboardLayout from "../dashboard/DashboardLayout";
 import AddProduct from "../dashboard/ManageProduct/AddProduct";
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
                 path : '/dashboard/allseller/:userstatus',
                 loader : ({params}) => fetch(`http://localhost:5000/users?userstatus=${params.userstatus}`),
                 element:<TotalSeller></TotalSeller>
+            },
+            {
+                path : '/dashboard/allbuyer/:userstatus',
+                loader : ({params}) => fetch(`http://localhost:5000/users?userstatus=${params.userstatus}`),
+                element:<AllBuyer></AllBuyer>
             },
             {
                 path: '/dashboard/payment/:id',

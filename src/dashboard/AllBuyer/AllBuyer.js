@@ -1,10 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import TotolSellerTable from './TotolSellerTable';
+import AllBuyerTable from './AllBuyerTable';
 
-const TotalSeller = () => {
+const AllBuyer = () => {
     
-    const sellers = useLoaderData();
+    const buyers = useLoaderData();
     
     return (
         <div>
@@ -16,16 +16,15 @@ const TotalSeller = () => {
             <tr>
               <th>Name</th>
               <th>Status</th>
-              <th>Verify</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {
-                sellers.map(seller =>
-                    <TotolSellerTable
-                    seller={seller}
-                    ></TotolSellerTable>    
+                buyers.map(buyer =>
+                    <AllBuyerTable
+                    buyer={buyer}
+                    ></AllBuyerTable>    
                 )
             }
           </tbody>
@@ -36,4 +35,4 @@ const TotalSeller = () => {
     );
 }
 
-export default TotalSeller;
+export default AllBuyer;

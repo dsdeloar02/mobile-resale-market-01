@@ -10,6 +10,7 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
 
     const userStatus = 'seller';
+    const userStatusTow = 'buyer';
 
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email) ;
@@ -31,8 +32,8 @@ const DashboardLayout = () => {
                         {
                             isAdmin && <>
                                 <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to={`/dashboard/allseller/${userStatus}`}>All Seller</Link></li>
-                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/adddoctor">All buyer</Link></li>
-                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/managedoctors">Reported Items</Link></li>
+                                <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to={`/dashboard/allbuyer/${userStatusTow}`}>All buyer</Link></li>
+                                {/* <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to="/dashboard/managedoctors">Reported Items</Link></li> */}
                             </>
                         }
                         {
