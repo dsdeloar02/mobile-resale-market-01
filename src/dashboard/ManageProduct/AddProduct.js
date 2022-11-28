@@ -48,7 +48,7 @@ const AddProduct = () => {
                     postDate: format(new Date(), "PP")
                 }
 
-                fetch('http://localhost:5000/products', {
+                fetch('https://mobile-market-server-five.vercel.app/products', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json', 

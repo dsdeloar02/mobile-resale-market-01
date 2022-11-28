@@ -29,7 +29,7 @@ const BuyingModal = ({bookingProducts, setBookingProducts}) => {
             productsId: _id
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://mobile-market-server-five.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

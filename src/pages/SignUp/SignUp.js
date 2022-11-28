@@ -83,7 +83,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, userstatus) =>{
       const user ={name, email, userstatus};
-      fetch('http://localhost:5000/users', {
+      fetch('https://mobile-market-server-five.vercel.app/users', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'

@@ -14,7 +14,7 @@ const CheckoutForm = ({order}) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon ruas the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://mobile-market-server-five.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const CheckoutForm = ({order}) => {
                 order: _id,
                 bookingsId: productsId
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://mobile-market-server-five.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

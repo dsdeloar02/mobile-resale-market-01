@@ -10,7 +10,7 @@ const MysingleProduct = ({sellerProduct}) => {
 
     const handleAdvertise = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/seller/myproducts/${id}`, {
+        fetch(`https://mobile-market-server-five.vercel.app/seller/myproducts/${id}`, {
             method : 'PUT'
         })
         .then(res => res.json())
@@ -26,7 +26,7 @@ const MysingleProduct = ({sellerProduct}) => {
         const agree = window.confirm(`Are you sure you want to delete : ${user.name}`)
         console.log(agree)
         if(agree){
-            fetch(`http://localhost:5000/sellePproducts/${_id}`, {
+            fetch(`https://mobile-market-server-five.vercel.app/sellePproducts/${_id}`, {
                 method : 'DELETE'
             })
             .then(res => res.json())

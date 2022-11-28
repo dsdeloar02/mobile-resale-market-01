@@ -5,7 +5,7 @@ import Category from './Category';
 
 const PhoneCategory = () => {
 
-    const url = `http://localhost:5000/categories`;
+    const url = `https://mobile-market-server-five.vercel.app/categories`;
 
     const { data: categories, isLoading } = useQuery({
         queryKey:['categories'],

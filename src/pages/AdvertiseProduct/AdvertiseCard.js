@@ -7,7 +7,7 @@ const AdvertiseCard = ({advProduct}) => {
     const [checkVerify, setCheckVerify] = useState(false);
     const {categoryName, sellerEmail, productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, postDate } = advProduct;
     useEffect(() => {
-        fetch(`http://localhost:5000/user-verify?sellerEmail=${sellerEmail}`)
+        fetch(`https://mobile-market-server-five.vercel.app/user-verify?sellerEmail=${sellerEmail}`)
         .then(res => res.json())
         .then(data =>{
             setCheckVerify(data.result)

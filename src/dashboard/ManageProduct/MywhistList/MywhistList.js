@@ -7,7 +7,7 @@ const MywhistList = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/whistlists?email=${user?.email}`;
+    const url = `https://mobile-market-server-five.vercel.app/whistlists?email=${user?.email}`;
 
     const { data: whistlists = [] } = useQuery({
         queryKey:['whistlists', user?.email],

@@ -10,7 +10,7 @@ const AdvertiseProduct = () => {
     const { data: adproducts = [], isLoading } = useQuery({
                 queryKey: ["adproducts"],
                 queryFn: async () => {
-                const res = await fetch(`http://localhost:5000/advertisProducts?advertise=${isAdvertise}`);
+                const res = await fetch(`https://mobile-market-server-five.vercel.app/advertisProducts?advertise=${isAdvertise}`);
                 const data = await res.json();
                 setAdvProducts(data)
             }

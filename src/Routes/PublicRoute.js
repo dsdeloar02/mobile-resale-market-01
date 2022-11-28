@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path : '/products/:categoryName',
-                loader : ({params}) => fetch(`http://localhost:5000/products?categoryName=${params.categoryName}`),
+                loader : ({params}) => fetch(`https://mobile-market-server-five.vercel.app/products?categoryName=${params.categoryName}`),
                 element : <PrivateRoutes><CategoryDetails></CategoryDetails></PrivateRoutes>
             },
             {
@@ -74,23 +74,23 @@ const router = createBrowserRouter([
             },
             {
                 path : '/dashboard/myproducts/:sellerName',
-                loader: ({params})=> fetch(`http://localhost:5000/sellePproducts?sellerName=${params.sellerName}`),
+                loader: ({params})=> fetch(`https://mobile-market-server-five.vercel.app/sellePproducts?sellerName=${params.sellerName}`),
                 element:<MyProduct></MyProduct>
             },
             {
                 path : '/dashboard/allseller/:userstatus',
-                loader : ({params}) => fetch(`http://localhost:5000/users?userstatus=${params.userstatus}`),
+                loader : ({params}) => fetch(`https://mobile-market-server-five.vercel.app/users?userstatus=${params.userstatus}`),
                 element:<TotalSeller></TotalSeller>
             },
             {
                 path : '/dashboard/allbuyer/:userstatus',
-                loader : ({params}) => fetch(`http://localhost:5000/users?userstatus=${params.userstatus}`),
+                loader : ({params}) => fetch(`https://mobile-market-server-five.vercel.app/users?userstatus=${params.userstatus}`),
                 element:<AllBuyer></AllBuyer>
             },
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
+                loader: ({params}) => fetch(`https://mobile-market-server-five.vercel.app/orders/${params.id}`)
             }
         ]
     }

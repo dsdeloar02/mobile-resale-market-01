@@ -11,7 +11,7 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
     console.log(categoryProduct)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user-verify?sellerEmail=${sellerEmail}`)
+        fetch(`https://mobile-market-server-five.vercel.app/user-verify?sellerEmail=${sellerEmail}`)
         .then(res => res.json())
         .then(data =>{
             setCheckVerify(data.result)
@@ -31,7 +31,7 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
             categoryName,
             email: user.email
         }
-        fetch('http://localhost:5000/whistlists', {
+        fetch('https://mobile-market-server-five.vercel.app/whistlists', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

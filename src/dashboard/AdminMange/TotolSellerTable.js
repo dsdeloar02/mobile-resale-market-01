@@ -8,7 +8,7 @@ const TotolSellerTable = ({seller}) => {
 
     const handleVerify = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://mobile-market-server-five.vercel.app/users/admin/${id}`, {
             method : 'PUT'
         })
         .then(res => res.json())
@@ -24,7 +24,7 @@ const TotolSellerTable = ({seller}) => {
         const agree = window.confirm(`Are you sure you want to delete : ${name}`)
         console.log(agree)
         if(agree){
-            fetch(`http://localhost:5000/seller/${_id}`, {
+            fetch(`https://mobile-market-server-five.vercel.app/seller/${_id}`, {
                 method : 'DELETE'
             })
             .then(res => res.json())
