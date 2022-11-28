@@ -21,7 +21,7 @@ const CategoryDetails = () => {
             <h1 className='text-3xl font-bold text-center my-4' >Category Details  </h1>
             
             <div className='w-[80%] mx-auto flex flex-wrap justify-between my-8'>
-                {
+                {  
                     categoryProducts.map(categoryProduct => <SingleCategory
                         key={categoryProduct._id}
                         categoryProduct={categoryProduct}

@@ -76,7 +76,13 @@ const MyOrders = () => {
                     </td>
                     <td>{order.phone}</td>
                     <td>
-                      <Link to={`/dashboard/payment/${order._id}`} className="py-2 px-3 bg-cyan-500 text-white rounded-md">Pay Now</Link>
+                      {
+                        order.resalePrice && !order.paid && <Link to={`/dashboard/payment/${order._id}`} className="py-2 px-3 bg-cyan-500 text-white rounded-md">Pay Now</Link>
+                      }
+                      {
+                        order.resalePrice && order.paid && <Link to={`/dashboard/payment/${order._id}`} className="py-2 px-3 bg-cyan-500 text-white rounded-md">Paid</Link>
+                      }
+                      
                     </td>
                   </tr>    
                 )

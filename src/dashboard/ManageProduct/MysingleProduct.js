@@ -3,8 +3,10 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const MysingleProduct = ({sellerProduct}) => {
-    const {_id, postDate, productImage, productName, sellerName, orginalPrice, resalePrice, usedYears } = sellerProduct;
+    const {_id, postDate, productImage, productName, sellerName, orginalPrice, resalePrice, usedYears, sold } = sellerProduct;
     const navigate = useNavigate();
+
+    console.log(sellerProduct)
 
     const handleAdvertise = (id) => {
         console.log(id)
@@ -45,10 +47,16 @@ const MysingleProduct = ({sellerProduct}) => {
             <div className="card-body">
                 <h2 className="card-title">
                 {productName}
-                <div className="badge badge-secondary">Available</div>
+                <div className="badge badge-secondary">
+                    {
+                        sold !== true ? <>Avilable</> : <> sold </>
+                    }
+                </div>
                 </h2>
                 <div className="card-actions justify-end my-2">
-                <button onClick={() => handleAdvertise(_id)} className="badge bg-green-500 ">Advertise</button> 
+                {
+                    sold !== true && <button onClick={() => handleAdvertise(_id)} className="badge bg-green-500 ">Advertise</button> 
+                }
                 <button onClick={handleDelteBtn} className="badge bg-red-800">Delete</button>
                 </div>
             </div>
