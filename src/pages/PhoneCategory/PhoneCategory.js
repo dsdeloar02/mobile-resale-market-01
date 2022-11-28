@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loading from '../Shared/Loading/Loading';
 import Category from './Category';
 
 const PhoneCategory = () => {
@@ -15,7 +16,7 @@ const PhoneCategory = () => {
     console.log(categories)
 
     if(isLoading){
-        return <p>Loading ... </p>
+        return <Loading></Loading>
     }
     // const {_id, category-name, category-img } = categories;
 

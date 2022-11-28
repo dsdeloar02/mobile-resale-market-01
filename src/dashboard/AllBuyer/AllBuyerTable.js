@@ -30,7 +30,7 @@ const AllBuyerTable = ({buyer}) => {
             .then(res => res.json())
             .then(data => {
                 if(data.deletedCount > 0){
-                    alert('user delete successfullly')
+                    toast.success('user delete successfullly')
                     navigate(`/dashboard/allbuyer/${userstatus}`)
                 }
             })

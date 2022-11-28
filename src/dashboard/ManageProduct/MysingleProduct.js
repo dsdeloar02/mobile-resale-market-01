@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const MysingleProduct = ({sellerProduct}) => {
-    const {_id, postDate, productImage, productName, sellerName, orginalPrice, resalePrice, usedYears, sold } = sellerProduct;
+    const {_id,  productImage, productName, sellerName, sold } = sellerProduct;
     const navigate = useNavigate();
 
     console.log(sellerProduct)
@@ -42,7 +42,7 @@ const MysingleProduct = ({sellerProduct}) => {
 
 
     return (
-        <div className="card w-[48%] bg-base-100 shadow-xl my-2">
+        <div className="card w-full  md:w-[48%] bg-base-100 shadow-xl my-2">
             <figure><img src={productImage} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">

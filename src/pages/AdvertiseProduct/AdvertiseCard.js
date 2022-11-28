@@ -15,7 +15,7 @@ const AdvertiseCard = ({advProduct}) => {
         })
     })
     return (
-        <div className='w-[30%] my-2 rounded shadow-md border p-6 flex flex-col justify-between'>
+        <div className='w-full md:w-[50] lg:w-[30%] my-2 rounded shadow-md border p-6 flex flex-col justify-between'>
             <p className='text-center font-bold text-xl' >{productName}</p> 
             <img className='w-[200px] mx-auto' src={productImage} alt="" />
             <div className='my-3 p-2 border rounded'>

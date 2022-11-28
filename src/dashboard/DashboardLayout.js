@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import useAdmin from '../hook/useAdmin';
@@ -8,6 +8,7 @@ import Navbar from '../pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
+    const [open, setOpen] = useState(false);
 
     const userStatus = 'seller';
     const userStatusTow = 'buyer';
@@ -20,15 +21,9 @@ const DashboardLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="drawer drawer-mobile">
-                <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content">
-                    <Outlet></Outlet>
-                </div>
-
-               
-                <div className="drawer-side">
-                    <ul className={`bg-gradient-to-r from-green-400 to-blue-500 w-80 h-screen py-6`}>
+            <div className='flex flex-wrap justify-between'>
+                <div className="w-full md:w-full lg:w-[25%] ">
+                    <ul className={` flex flex-wrap justify-center w-full md:w-full md:flex lg:block bg-gradient-to-r from-green-400 to-blue-500 lg:w-80 lg:h-screen py-6`}>
                         {
                             isAdmin && <>
                                 <li className='py-2 px-5 mx-3 rounded bg-slate-400 my-2 hover:bg-slate-100 '><Link to={`/dashboard/allseller/${userStatus}`}>All Seller</Link></li>
@@ -51,6 +46,9 @@ const DashboardLayout = () => {
 
                     </ul>
                 </div>
+                <div className="w-full md:w-full lg:w-[75%]">
+                    <Outlet></Outlet>
+                </div>            
             </div>
         </div>
     );

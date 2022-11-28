@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import Loading from '../Shared/Loading/Loading';
 import AdvertiseCard from './AdvertiseCard';
 
 const AdvertiseProduct = () => {
@@ -15,7 +16,9 @@ const AdvertiseProduct = () => {
             }
         });
 
-    // console.log(advProducts)
+        if(isLoading){
+            return <Loading></Loading>
+        }
 
     return (
         <div >

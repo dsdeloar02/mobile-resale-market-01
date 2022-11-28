@@ -66,7 +66,7 @@ const LogIn = () => {
             </h3>
           </div>
 
-          <form onSubmit={handleLogIn} className="w-1/2 mx-auto shadow-md border p-8 rounded">
+          <form onSubmit={handleLogIn} className="md:w-1/2 mx-auto shadow-md border p-8 rounded">
             <div className="flex flex-wrap -mx-3 ">
 
               <div className="w-full px-3">
@@ -106,11 +106,11 @@ const LogIn = () => {
               <p className="mt-3 w-full text-center" >If you New user? <Link to='/signup' className="text-cyan-500 font-bold" >Register</Link></p>
 
             </div>
-          </form>
-          <button onClick={handleGoogleSignIn}  className="w-full border py-3 text-gray-600 mx-3 mt-2 rounded flex justify-center shadow-md" >
+          <button onClick={handleGoogleSignIn}  className="w-full border py-3 text-gray-600 mt-2 rounded flex justify-center shadow-md" >
             <img src={Google} alt="" />
               <p className="ml-2">Sign Up with Google</p>
           </button>
+          </form>
         </div>
       </div>
     </div>

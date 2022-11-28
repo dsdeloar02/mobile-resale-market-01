@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthProvider';
 const SingleCategory = ({categoryProduct, setBookingProducts}) => {
     const {user} = useContext(AuthContext);
     const [checkVerify, setCheckVerify] = useState(false);
-    const {productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, categoryName, postDate, sellerEmail, sold } = categoryProduct;
+    const {productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, categoryName, postDate, sellerEmail } = categoryProduct;
     console.log(categoryProduct)
 
     useEffect(() => {
@@ -51,9 +51,6 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
                 }
             })
 
-        // TODO: send data to the server
-        // and once data is saved then close the modal 
-        // and display success toast
         console.log(whistList);
         setBookingProducts(null);
     }
@@ -63,7 +60,7 @@ const SingleCategory = ({categoryProduct, setBookingProducts}) => {
    
 
     return (  
-    <div className='w-[30%] my-2 rounded shadow-md border p-6 flex flex-col justify-between'>
+    <div className='w-full md:w-[49%] lg:w-[30%] my-2 rounded shadow-md border p-6 flex flex-col justify-between'>
              <p className='text-center font-bold text-xl' >{productName}</p> 
              <img className='w-[200px] mx-auto' src={productImage} alt="" />
              <div className='my-3 p-2 border rounded'>

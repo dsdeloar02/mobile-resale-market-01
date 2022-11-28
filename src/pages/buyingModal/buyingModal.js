@@ -3,8 +3,8 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 
 const BuyingModal = ({bookingProducts, setBookingProducts}) => {
-    const { user, logOut } = useContext(AuthContext);
-    const { productName, productImage, resalePrice, orginalPrice, usedYears, sellerName, postDate, _id } = bookingProducts;
+    const { user } = useContext(AuthContext);
+    const { productName, productImage, resalePrice, _id } = bookingProducts;
 
     console.log(_id)
     const handleBooking = event => {
@@ -17,7 +17,7 @@ const BuyingModal = ({bookingProducts, setBookingProducts}) => {
         const resalePrice = form.resalePrice.value;
         const location = form.location.value;
         console.log(productName, resalePrice);
-        // [3, 4, 5].map((value, i) => console.log(value))
+
         const order = {
             buyer: name,
             productName,
@@ -49,9 +49,6 @@ const BuyingModal = ({bookingProducts, setBookingProducts}) => {
                 }
             })
 
-        // TODO: send data to the server
-        // and once data is saved then close the modal 
-        // and display success toast
         console.log(order);
         setBookingProducts(null);
     }
@@ -59,9 +56,6 @@ const BuyingModal = ({bookingProducts, setBookingProducts}) => {
 
     return (
         <div>
-            {/* <label htmlFor="buyingModal" className="btn">open modal</label> */}
-
-            {/* Put this part before </body> tag */}
             <input type="checkbox" id="buyingModal" className="modal-toggle" />
             <div className="modal">
             <div className="modal-box relative">

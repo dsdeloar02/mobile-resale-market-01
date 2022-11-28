@@ -1,26 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../../context/AuthProvider';
-import useSeller from '../../../hook/useSeller';
-// import {BsFillBrightnessHighFill }  from "react-icons/bs";
-// import { CiDark } from "react-icons/ci";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false)
-    const [theme, setTheme] = useState('light');
     const { user, logOut } = useContext(AuthContext);
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if(theme === 'dark'){
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [theme])
 
 
 
@@ -60,9 +47,11 @@ const Navbar = () => {
                     {
                         user?.uid ? 
                         <>
-                            <button className='w-full mx-2 py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700' onClick={handleLogOut} >Sign Out</button>
+                            <li className='mx-0 md:mx-2 mb-2 md:mb-0 '>
+                            <button className='w-[96%] ml-2  py-2 px-2 text-left lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700' onClick={handleLogOut} >Sign Out</button>
+                            </li>
                         
-                            <li className='mx-2 my-2 py-2 px-2 lg:px-4 dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
+                            <li className='mx-2 my-2 py-2 px-2 lg:px-4  dark:text-gray-100 rounded-md bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-400 hover:to-pink-700'>
                                 <NavLink to='/dashboard' > DashBoard </NavLink>
                             </li>
                         </>

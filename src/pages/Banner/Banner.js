@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import realme from '../../assests/images/realmee.png';
 import readmi from '../../assests/images/readmi.png';
-import iphone from '../../assests/images/iphone.png';
 
 // Import Swiper styles
 import "swiper/css";
@@ -27,9 +26,6 @@ const Banner = () => {
         <SwiperSlide>
             <img className='w-full' src={realme} alt="" />
         </SwiperSlide>
-        {/* <SwiperSlide>
-            <img src={iphone} alt="" />
-        </SwiperSlide> */}
         <SwiperSlide>
             <img src={readmi} alt="" />
         </SwiperSlide>
